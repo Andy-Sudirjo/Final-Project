@@ -1,10 +1,9 @@
 class Tile{
   float x, y;
   int size;
-  color c = 150;
-  boolean isCheckPoint = false, isFinish = false;
+  boolean isCheckPoint = false, isFinish = false, isTrack = false;
   
-  public Tile(float x, float y, int size, color c, String type){
+  public Tile(float x, float y, int size, String type){
     this.x=x;
     this.y=y;
     this.size = size;
@@ -12,16 +11,23 @@ class Tile{
       isCheckPoint = true;
     if(type=="finish")
       isFinish = true;
+    if(type=="track")
+      isTrack =true;
   }
   
   void drawTile(){
-    fill(c);
-    stroke(c);
+    fill(26, 168, 13);
+    stroke(26, 168, 13);
     float sX = (x-y)*size/2;
     float sY = (x+y)*size/4;
     pushMatrix();
     translate(sX,sY);
-
+    if(isFinish){
+     fill(0); 
+    }
+    if(isTrack){
+      fill(160);
+    }
     beginShape();
     vertex(0,-size/4);
     vertex(size/2,0);
@@ -33,41 +39,6 @@ class Tile{
   }
   
   void typeAddition(){
-    if(isFinish){
-      fill(0);
-      beginShape();
-      vertex(0,-size/8);
-      vertex(size/4,0);
-      vertex(0,size/8);
-      vertex(-size/4,0);
-      endShape(CLOSE);
-      
-      translate(0.5,0);
-      fill(255);
-      beginShape();
-      vertex(0,-size/8);
-      vertex(size/4,0);
-      vertex(0,size/8);
-      vertex(-size/4,0);
-      endShape(CLOSE);
-      
-      translate(0,0.5);
-      fill(255);
-      beginShape();
-      vertex(0,-size/8);
-      vertex(size/4,0);
-      vertex(0,size/8);
-      vertex(-size/4,0);
-      endShape(CLOSE);
-      
-      translate(0.5,0.5);
-      fill(0);
-      beginShape();
-      vertex(0,-size/8);
-      vertex(size/4,0);
-      vertex(0,size/8);
-      vertex(-size/4,0);
-      endShape(CLOSE);
-    }
+
   }
 }
