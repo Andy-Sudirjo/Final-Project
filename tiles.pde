@@ -1,7 +1,7 @@
 class Tile{
   float x, y;
   int size;
-  boolean isCheckPoint = false, isFinish = false, isTrack = false;
+  boolean isCheckPoint = false, isFinish = false, isTrack = false, isObstacle = false;
   
   public Tile(float x, float y, int size, String type){
     this.x=x;
@@ -13,6 +13,8 @@ class Tile{
       isFinish = true;
     if(type=="track")
       isTrack =true;
+    if(type=="obstacle")
+      isObstacle = true;
   }
   
   void drawTile(){
@@ -30,17 +32,22 @@ class Tile{
       stroke(160);
       fill(160);
     }
+    if(isObstacle){
+     stroke(160);
+     fill(160);
+     ellipse(0,0,size/4,size/4); 
+    }
     beginShape();
     vertex(0,-size/4);
     vertex(size/2,0);
     vertex(0,size/4);
     vertex(-size/2,0);
     endShape(CLOSE);
-    typeAddition();
+    
+    if(isObstacle){
+     fill(0);
+     ellipse(0,0,size/4,size/4); 
+    }
     popMatrix();
-  }
-  
-  void typeAddition(){
-
   }
 }

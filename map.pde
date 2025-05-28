@@ -1,18 +1,15 @@
-int[][] track = new int[][]{{3,3,3,3,3,3,3,3,3,3},
-                            {3,2,2,2,2,3,3,3,3,3},
-                            {3,2,3,3,2,3,3,3,3,3},
-                            {3,2,3,3,2,2,2,3,3,3},
-                            {3,2,3,3,3,3,2,3,3,3},
-                            {3,2,2,0,2,2,2,3,3,3},
+int[][] track = new int[][]{{4,4,4,4,4,4,4,4,4},
+                            {4,2,2,2,2,2,4,4,4},
+                            {4,3,4,4,4,2,2,2,4},
+                            {4,2,2,4,4,4,4,0,4},
+                            {4,4,2,2,4,4,4,2,4},
+                            {4,4,4,3,2,2,3,2,4},
                             };
 int tileSize = 150;
+int bestTime = 0;
 
-void setup(){
- size(1000,1000);
- noLoop();
-}
 
-void draw(){
+void drawMap(){
  background(255);
  translate(width/2,100);
  for(float i = 0;i<track.length;i++){
@@ -24,6 +21,8 @@ void draw(){
     type = "check";
     if(track[int(i)][int(j)]==2)
     type = "track";
+    if(track[int(i)][int(j)]==3)
+    type = "obstacle";
     Tile t = new Tile(i, j, tileSize, type);
     t.drawTile();
   }
