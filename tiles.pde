@@ -16,16 +16,18 @@ class Tile{
   }
   
   void drawTile(){
-    fill(26, 168, 13);
     stroke(26, 168, 13);
+    fill(26, 168, 13);
     float sX = (x-y)*size/2;
     float sY = (x+y)*size/4;
     pushMatrix();
     translate(sX,sY);
     if(isFinish){
+     stroke(0);
      fill(0); 
     }
     if(isTrack){
+      stroke(160);
       fill(160);
     }
     beginShape();
