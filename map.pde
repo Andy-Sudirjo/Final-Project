@@ -1,17 +1,29 @@
-int[][] track = new int[][]{{4,4,4,4,4,4,4,4,4},
-                            {4,2,2,2,2,2,4,4,4},
-                            {4,3,4,4,4,2,2,2,4},
-                            {4,2,2,4,4,4,4,0,4},
-                            {4,4,2,2,4,4,4,2,4},
-                            {4,4,4,3,2,2,3,2,4},
-                            };
+int[][] track1 = new int[][]{{4,4,4,4,4,4,4,4,4},
+                             {4,2,2,2,2,2,4,4,4},
+                             {4,3,4,4,4,2,2,2,4},
+                             {4,2,2,4,4,4,4,0,4},
+                             {4,4,2,2,4,4,4,2,4},
+                             {4,4,4,3,2,2,3,2,4},
+                             };
+int[][] track2 = new int[][]{{4,4,4,4,4,4,4,4,4},
+                             {4,2,2,2,2,2,4,4,4},
+                             {4,3,4,4,4,2,2,2,4},
+                             {4,2,2,4,4,4,4,0,4},
+                             {4,4,2,2,4,4,4,2,4},
+                             {4,4,4,3,2,2,3,2,4},
+                             };
 int tileSize = 150;
 int bestTime = 0;
+Timer t = new Timer();
 
-
-void drawMap(){
+void drawMap(int x){
  background(255);
  translate(width/2,100);
+ int[][] track;
+ if(x==1)
+ track = track1;
+ else
+ track = track2;
  for(float i = 0;i<track.length;i++){
   for(float j = 0;j<track[int(i)].length;j++){
     String type = "normal";
@@ -27,4 +39,20 @@ void drawMap(){
     t.drawTile();
   }
  }
+}
+
+void drawTime(){
+ fill(0);
+ textSize(64);
+ int a = t.minutes();
+ int b = t.seconds();
+ println(a+ " : " + b,width/2,height/2);
+}
+
+void raceComplete(){
+  t.stop();
+  if(bestTime == 0)
+  bestTime = t.getTime();
+  if(bestTime>t.getTime())
+  bestTime = t.getTime();
 }

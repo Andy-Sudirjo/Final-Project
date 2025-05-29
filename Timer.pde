@@ -1,4 +1,4 @@
-public class Timer{
+class Timer{
  int sTime = 0, eTime = 0;
  boolean running = false;
  
@@ -20,6 +20,11 @@ public class Timer{
    }
    return time;
  }
- 
- 
+  int seconds(){
+    return (getTime() / 1000) % 60;
+  }
+  int minutes(){
+    return (getTime() / (1000*60)) % 60;
+  }
+
 }

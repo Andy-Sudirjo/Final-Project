@@ -4,5 +4,7 @@ void setup(){
 }
 
 void draw(){
- drawMap(); 
+ drawMap(1);
+ t.start();
+ drawTime();
 }
