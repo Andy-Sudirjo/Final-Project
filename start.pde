@@ -1,10 +1,15 @@
 void setup(){
  size(1500,1000);
- noLoop();
+ background(71, 181, 245);
+ t.start();
 }
 
 void draw(){
  drawMap(1);
- t.start();
  drawTime();
+}
+
+void drawMenu(){
+  background(71, 181, 245);
+  
 }
