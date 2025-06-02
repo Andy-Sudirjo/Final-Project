@@ -43,10 +43,10 @@ void drawMap(int x){
 
 void drawTime(){
  fill(0);
- textSize(128);
+ textSize(64);
  int a = t.minutes();
  int b = t.seconds();
- text(a+ " : " + b,width/2,height/2);
+ text(a+ " : " + b,550,50);
 }
 
 void raceComplete(){
