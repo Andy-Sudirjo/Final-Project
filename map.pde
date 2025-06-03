@@ -17,6 +17,7 @@ int[][] track2 = new int[][]{{4,4,4,4,4,4,4,4,4},
 int[][] track;
 int tileSize = 150;
 int bestTime = 0;
+int maxChecks;
 Timer t = new Timer();
 
 void drawMap(int x){
@@ -63,4 +64,5 @@ void raceComplete(){
   bestTime = t.getTime();
   if(bestTime>t.getTime())
   bestTime = t.getTime();
+  select = false;
 }

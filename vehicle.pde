@@ -2,6 +2,8 @@ class Vehicle{
   PVector acceleration, velocity, position;
   float angle;
   boolean mUp=false, mDown=false, mLeft=false, mRight=false;
+  int lap = 0;
+  int checks = 0;
   
   public Vehicle(float x, float y){
     position.set(x,y);
@@ -29,6 +31,18 @@ class Vehicle{
   }
   void drawVehicle(){
     
+  }
+  
+  void interact(float x, float y){
+    int row = int(x/tileSize);
+    int col = int(y/tileSize);
+    if(track[row][col]==0&& maxChecks==checks){
+      lap+=1;
+      checks=0;
+    }
+    if(track[row][col]==1){
+      
+    }
   }
   
   void keyPressed(){
