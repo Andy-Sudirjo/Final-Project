@@ -1,5 +1,6 @@
 class Vehicle{
   PVector acceleration, velocity, position;
+  float angle;
   boolean mUp=false, mDown=false, mLeft=false, mRight=false;
   
   public Vehicle(float x, float y){
@@ -8,17 +9,25 @@ class Vehicle{
     velocity.set(0,0);
   }
   
-  void drawVehicle(){
+  void updateVehicle(){
     acceleration.limit(5);
     if(mUp)
-    acceleration.add(1,1);
+    acceleration = PVector.fromAngle(angle).mult(0.3);
     if(mDown)
-    acceleration.sub(1,1);
+    acceleration = PVector.fromAngle(angle).mult(-0.2);
     if(mLeft)
-    acceleration.add(1,1);
+    angle -= 0.5;
     if(mRight)
-    acceleration.add(1,1);
+    angle += 0.5;
     velocity.add(acceleration);
+    PVector z = PVector.add(position,velocity);
+    if(onTrack(position.x,position.y)){
+      position = z;
+    }else{
+     velocity.mult(0.3); 
+    }
+  }
+  void drawVehicle(){
     
   }
   

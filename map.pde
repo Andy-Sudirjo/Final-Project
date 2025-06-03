@@ -1,10 +1,12 @@
-int[][] track1 = new int[][]{{4,4,4,4,4,4,4,4,4},
-                             {4,2,2,2,2,2,4,4,4},
-                             {4,3,4,4,4,2,2,2,4},
-                             {4,2,2,4,4,4,4,0,4},
-                             {4,4,2,2,4,4,4,2,4},
-                             {4,4,4,3,2,2,3,2,4},
-                             };
+int[][] track1 = new int[][]{{4,4,4,4,4,4,4,4,4,4,4},
+                             {4,2,2,2,2,2,4,4,4,4,4},
+                             {4,3,4,4,4,2,2,2,4,4,4},
+                             {4,2,2,4,4,4,4,0,4,4,4},
+                             {4,4,2,2,4,4,4,2,4,4,4},
+                             {4,4,4,3,2,2,3,2,4,4,4},
+                             {4,4,4,4,4,4,4,4,4,4,4},
+                             {4,4,4,4,4,4,4,4,4,4,4}};
+                             
 int[][] track2 = new int[][]{{4,4,4,4,4,4,4,4,4},
                              {4,2,2,2,2,2,4,4,4},
                              {4,3,4,4,4,2,2,2,4},
@@ -12,6 +14,7 @@ int[][] track2 = new int[][]{{4,4,4,4,4,4,4,4,4},
                              {4,4,2,2,4,4,4,2,4},
                              {4,4,4,3,2,2,3,2,4},
                              };
+int[][] track;
 int tileSize = 150;
 int bestTime = 0;
 Timer t = new Timer();
@@ -19,7 +22,6 @@ Timer t = new Timer();
 void drawMap(int x){
  background(255);
  translate(width/2,100);
- int[][] track;
  if(x==1)
  track = track1;
  else
@@ -47,6 +49,12 @@ void drawTime(){
  int a = t.minutes();
  int b = t.seconds();
  text(a+ " : " + b,550,50);
+}
+
+boolean onTrack(float x, float y){
+    int row = int(x/tileSize);
+    int col = int(y/tileSize);
+    return track[row][col] != 4;
 }
 
 void raceComplete(){
