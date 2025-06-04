@@ -41,7 +41,8 @@ class Vehicle{
       checks=0;
     }
     if(track[row][col]==1){
-      
+      checks+=1;
+      track[row][col]+=.1;
     }
   }
   

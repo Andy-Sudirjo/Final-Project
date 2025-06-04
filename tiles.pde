@@ -1,7 +1,7 @@
 class Tile{
   float x, y;
   int size;
-  boolean isCheckPoint = false, isFinish = false, isTrack = false, isObstacle = false;
+  boolean isCheckPoint = false, isFinish = false, isTrack = false, isObstacle = false, checked = false;
   
   public Tile(float x, float y, int size, String type){
     this.x=x;
