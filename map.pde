@@ -15,7 +15,8 @@ int[][] track2 = new int[][]{{4,4,4,4,4,4,4,4,4},
                              {4,4,4,3,2,2,3,2,4},
                              };
 int[][] track;
-int tileSize = 150;
+int tileSize = 300;
+int x,y;
 int bestTime = 0;
 int maxChecks;
 Timer t = new Timer();

@@ -8,6 +8,7 @@ void draw(){
  if(select){
    drawMap(1);
    drawTime();
+   Vehicle v= new Vehicle(x,y);
  }else{
   drawMenu(); 
  }

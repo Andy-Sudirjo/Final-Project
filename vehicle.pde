@@ -12,6 +12,7 @@ class Vehicle{
   }
   
   void updateVehicle(){
+    camera();
     acceleration.limit(5);
     if(mUp)
     acceleration = PVector.fromAngle(angle).mult(0.3);
@@ -43,6 +44,9 @@ class Vehicle{
     if(track[row][col]==1){
       checks+=1;
       track[row][col]+=.1;
+    }
+    if(track[row][col]==3){
+      angle += random(-1,1);
     }
   }
   
