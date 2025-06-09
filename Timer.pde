@@ -1,4 +1,4 @@
-class Timer{
+sclass Timer{
  int sTime = 0, eTime = 0;
  boolean running = false;
  
