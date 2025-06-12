@@ -3,7 +3,6 @@ class Vehicle{
   float acceleration = 5;
   float angle;
   PImage img;
-
   int lap = 0;
   int checks = 0;
   
@@ -66,6 +65,9 @@ class Vehicle{
     }
   }
   
+  void countLap(){
+    
+  }
 
   
 }

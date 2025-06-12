@@ -1,4 +1,4 @@
-boolean select = false, starting = false;
+boolean select = false;
 Vehicle v;
   boolean[] keys;
 void setup(){
@@ -13,10 +13,6 @@ void setup(){
 
 void draw(){
  if(select){
-   if(starting){
-    countDown();
-    starting = false;
-   }
    drawMap(1);
    drawTime();
    v.updateVehicle();

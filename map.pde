@@ -53,12 +53,6 @@ void drawTime(){
  text(a+ " : " + b,550,50);
 }
 
-boolean onTrack(float x, float y){
-    int row = int(x/tileSize);
-    int col = int(y/tileSize);
-    return track[row][col] != 4;
-}
-
 void raceComplete(){
   t.stop();
   if(bestTime == 0)
