@@ -1,41 +1,52 @@
 class Vehicle{
-  PVector acceleration, velocity, position;
+  PVector velocity, position;
+  float acceleration = 5;
   float angle;
-  boolean mUp=false, mDown=false, mLeft=false, mRight=false;
+  PImage img;
+
   int lap = 0;
   int checks = 0;
   
   public Vehicle(float x, float y){
-    position.set(x,y);
-    acceleration.set(0,0);
-    velocity.set(0,0);
+    position = new PVector(x,y);
+    velocity = new PVector(0,0);
+    angle = 0;
+    img = loadImage("car.png");
   }
   
   void updateVehicle(){
-    acceleration.limit(5);
-    if(mUp)
-    acceleration = PVector.fromAngle(angle).mult(0.3);
-    if(mDown)
-    acceleration = PVector.fromAngle(angle).mult(-0.2);
-    if(mLeft)
-    angle -= 0.5;
-    if(mRight)
-    angle += 0.5;
-    velocity.add(acceleration);
-    PVector z = PVector.add(position,velocity);
-    if(onTrack(position.x,position.y)){
-      position = z;
-    }else{
-     velocity.mult(0.3); 
-    }
+    if(keys[0])//up
+    velocity.add(PVector.fromAngle(angle).mult(acceleration));
+    if(keys[1])//down
+    velocity.sub(PVector.fromAngle(angle).mult(acceleration/2));
+    if(keys[2])//left
+    angle -= 1;
+    if(keys[3])//right
+    angle += 1;
+    velocity.mult(0.9);
+    interact(position);
   }
   void drawVehicle(){
-    
+    PVector x = position;
+    pushMatrix();
+    translate(x.x,x.y);
+    rotate(radians(angle));
+    fill(0);
+    imageMode(CENTER);
+    if(abs(angle%360)>45)
+    img = loadImage("car.png");
+    else
+    img = loadImage("carright.png");
+    image(img,0,0,75,75);
+    popMatrix();
   }
   
-  void interact(float x, float y){
-    int row = int(x/tileSize);
-    int col = int(y/tileSize);
+  void interact(PVector p){
+    int row = int(p.x/50);
+    int col = int(p.y/100);
+    println("row " + row + " col " + col);
+    println(track[row][col]);
+    println(angle);
     if(track[row][col]==0&& maxChecks==checks){
       lap+=1;
       checks=0;
@@ -47,27 +58,14 @@ class Vehicle{
     if(track[row][col]==3){
       angle += random(-1,1);
     }
+    if(track[row][col]==4){
+      velocity.mult(-1);
+    }
+    if(track[row][col] != 4){
+      position.add(velocity);
+    }
   }
   
-  void keyPressed(){
-    if(keyCode == UP)
-      mUp=true;
-    if(keyCode == DOWN)
-      mDown=true;
-    if(keyCode == LEFT)
-      mLeft=true;
-    if(keyCode == RIGHT)
-      mRight=true;
-  }
-  void keyReleased(){
-    if(keyCode == UP)
-      mUp=false;
-    if(keyCode == DOWN)
-      mDown=false;
-    if(keyCode == LEFT)
-      mLeft=false;
-    if(keyCode == RIGHT)
-      mRight=false;
-  }
+
   
 }
