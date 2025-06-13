@@ -41,8 +41,8 @@ class Vehicle{
   }
   
   void interact(PVector p){
-    int row = int(p.x/50);
-    int col = int(p.y/100);
+    int row = int(p.x);
+    int col = int(p.y);
     println("row " + row + " col " + col);
     println(track[row][col]);
     println(angle);

@@ -24,8 +24,9 @@ void draw(){
 
 void drawMenu(){
   background(71, 181, 245);
-  rect(500,500,100,50);
-  rect(100,500,100,50);
+  rectMode(CENTER);
+  rect(1200,500,500,250);
+  rect(300,500,500,250);
 }
 
 void mousePressed(){
