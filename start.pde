@@ -13,10 +13,15 @@ void setup(){
 
 void draw(){
  if(select){
+   PVector vehiclePos = (v.position);
+   pushMatrix();
+   translate(width/4-vehiclePos.x-300,height/2-vehiclePos.y);
    drawMap(1);
-   drawTime();
    v.updateVehicle();
    v.drawVehicle();
+   translate(-(width/4-vehiclePos.x-300),-(height/2-vehiclePos.y));
+   drawTime();
+   popMatrix();
  }else{
   drawMenu(); 
  }
@@ -24,9 +29,14 @@ void draw(){
 
 void drawMenu(){
   background(71, 181, 245);
-  rectMode(CENTER);
-  rect(1200,500,500,250);
-  rect(300,500,500,250);
+  PImage x = loadImage("track1.png");
+  PImage y = loadImage("track2.png");
+  
+  image(x,80,500,550,380);
+  image(y,880,500,550,380);
+  
+  //rect(1200,500,500,250);
+  //rect(300,500,500,250);
 }
 
 void mousePressed(){

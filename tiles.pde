@@ -1,7 +1,7 @@
 class Tile{
   float x, y;
   int size;
-  boolean isCheckPoint = false, isFinish = false, isTrack = false, isObstacle = false, checked = false;
+  boolean isCheckPoint = false, isFinish = false, isTrack = false, isObstacle = false;
   
   public Tile(float x, float y, int size, String type){
     this.x=x;
@@ -28,7 +28,7 @@ class Tile{
      stroke(0);
      fill(0); 
     }
-    if(isTrack){
+    if(isTrack||isCheckPoint){
       stroke(160);
       fill(160);
     }
